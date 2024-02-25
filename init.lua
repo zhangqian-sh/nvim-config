@@ -200,17 +200,30 @@ require('lazy').setup({
     },
   },
 
+  --{
+  --  -- Theme inspired by Atom
+  --  'navarasu/onedark.nvim',
+  --  priority = 1000,
+  --  lazy = false,
+  --  config = function()
+  --    require('onedark').setup {
+  --      -- Set a style preset. 'dark' is default.
+  --      style = 'darker', -- dark, darker, cool, deep, warm, warmer, light
+  --    }
+  --    require('onedark').load()
+  --  end,
+  --},
+
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
+    "folke/tokyonight.nvim",
     lazy = false,
-    config = function()
-      require('onedark').setup {
-        -- Set a style preset. 'dark' is default.
-        style = 'dark', -- dark, darker, cool, deep, warm, warmer, light
+    priority = 1000,
+    opts = {},
+    config = function ()
+      require('tokyonight').setup {
+        style = 'storm',
       }
-      require('onedark').load()
+      require('tokyonight').load()
     end,
   },
 
@@ -283,7 +296,11 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
-}, {})
+}, {
+  defaults = {
+    lazy = false,
+  }
+})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -588,7 +605,7 @@ require('mason-lspconfig').setup()
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
